@@ -1,33 +1,32 @@
-import java.text.ParseException;
 
 public class Test {
 
 	public static void main(String[] args) throws ParseException, BuilderException {
 		// TODO Auto-generated method stub
 		String input1 = "Date, February 17, StudentNumber, 50, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
-		String input2 = "StudentNumber, 50, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
-		
-		//successfully create object with String input1
-		ClassRegisterBuilder builder1 = new ClassRegisterBuilder();
-		ClassInfoParser parser1 = new ClassInfoParser(builder1);
+		String input2a = "StudentNumber, 50, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
+		String input2b = "Date, February 17";
+		String input3 = "Date, February 17, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
+
+		//example for normally creating a new object
+		ClassInfoParser parser1 = new ClassInfoParser(new ClassRegisterBuilder());
 		parser1.parse(input1);
-		ClassRegister myClass1 = builder1.build();
-		System.out.println(myClass1);
+		ClassRegister class1 = parser1.getNewObject();
+		System.out.println(class1);
 		
-		//inform user "Valid date not found" exception
-		ClassRegisterBuilder builder2 = new ClassRegisterBuilder();
-		ClassInfoParser parser2 = new ClassInfoParser(builder2);
-		parser2.parse(input2);
-		//ClassRegister myClass2 = builder2.build();
-		//System.out.println(myClass2);
+		//example for creating a new object with seperate inputs
+		ClassInfoParser parser2 = new ClassInfoParser(new ClassRegisterBuilder());
+		parser2.parse(input2a);
+		parser2.parse(input2b);
+		ClassRegister class2 = parser2.getNewObject();
+		System.out.println(class2);
 		
-		//example for input data is not complete at the beginning. the builder will create object after receiveing all the required parameters.
-		String input3 = "Date, February 17";
+		//example for creating a new object with check and validation (insert default minimal number for studentNumber varable when missing such this parameter)
+		ClassInfoParser parser3 = new ClassInfoParser(new ClassRegisterBuilder());
 		parser3.parse(input3);
-		ClassRegister myClass2 = builder2.build();
-		System.out.println(myClass2);
-
-
+		parser3.parse(input3);
+		ClassRegister class3 = parser3.getNewObject();
+		System.out.println(class3);
 	}
 
 }
