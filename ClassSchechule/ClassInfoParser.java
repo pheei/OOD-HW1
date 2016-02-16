@@ -13,6 +13,11 @@ public class ClassInfoParser {
     }
 
  
+    public ClassRegister getNewObject() throws BuilderException{
+    	return builder.build();
+    }
+    
+    
     public void parse(String s) throws ParseException {
         String[] tokens = s.split(",\\s*");
         for (int i = 0; i < tokens.length; i += 2) {
@@ -34,4 +39,6 @@ public class ClassInfoParser {
                 builder.setEveryWeek(val.equalsIgnoreCase("true"));
         }
     }
+    
+    
 }
