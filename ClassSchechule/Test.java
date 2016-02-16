@@ -7,6 +7,7 @@ public class Test {
 		String input2a = "StudentNumber, 50, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
 		String input2b = "Date, February 17";
 		String input3 = "Date, February 17, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
+		String input4 = "Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
 
 		//example for normally creating a new object
 		ClassInfoParser parser1 = new ClassInfoParser(new ClassRegisterBuilder());
@@ -24,9 +25,14 @@ public class Test {
 		//example for creating a new object with check and validation (insert default minimal number for studentNumber varable when missing such this parameter)
 		ClassInfoParser parser3 = new ClassInfoParser(new ClassRegisterBuilder());
 		parser3.parse(input3);
-		parser3.parse(input3);
 		ClassRegister class3 = parser3.getNewObject();
 		System.out.println(class3);
+		
+		//example for throwing corresponding exceptions when required information missing
+		ClassInfoParser parser4 = new ClassInfoParser(new ClassRegisterBuilder());
+		parser4.parse(input4);
+		ClassRegister class4 = parser4.getNewObject();
+		System.out.println(class4);
 	}
 
 }
