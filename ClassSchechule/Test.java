@@ -9,7 +9,7 @@ public class Test {
 		String input1 = "Date, February 17, StudentNumber, 50, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
 		String input2a = "StudentNumber, 50, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
 		String input2b = "Date, February 17";
-		String input3 = "Date, February 17, Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
+		String input3 = "Date, February 17, RoomNumber, B156, isEveryWeek, true";
 		String input4 = "Building, Philip Hall, RoomNumber, B156, isEveryWeek, true";
 
 		
