@@ -12,16 +12,16 @@ public class ClassRegister implements Serializable {
 
     private String building;
 
-    private String roomNumer;
+    private String roomNumber;
 
     private boolean isEveryWeek;
 
     
-    ClassRegister(Date date, int studentNumber, String building, String roomNumer, boolean isEveryWeek) {
+    ClassRegister(Date date, int studentNumber, String building, String roomNumber, boolean isEveryWeek) {
         this.date = date;
         this.studentNumber = studentNumber;
         this.building = building;
-        this.roomNumer = roomNumer;
+        this.roomNumber = roomNumber;
         this.isEveryWeek = isEveryWeek;
     }
 
@@ -35,7 +35,7 @@ public class ClassRegister implements Serializable {
         sb.append(", Building: ");
         sb.append(building);
         sb.append(", Room Numer: ");
-        sb.append(roomNumer);
+        sb.append(roomNumber);
         sb.append(", Is Every Week: ");
         sb.append(isEveryWeek);
         return sb.toString();
@@ -73,12 +73,12 @@ public class ClassRegister implements Serializable {
 
 
 	public String getRoomNumer() {
-		return roomNumer;
+		return roomNumber;
 	}
 
 
 	public void setRoomNumer(String roomNumer) {
-		this.roomNumer = roomNumer;
+		this.roomNumber = roomNumer;
 	}
 
 

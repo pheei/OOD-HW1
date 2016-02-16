@@ -6,13 +6,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ClassInfoParser {
-	private ClassRegisterBuilder builder;
+	private ForgivingClassBuilder builder;
 
-    public ClassInfoParser(ClassRegisterBuilder builder) {
+    public ClassInfoParser(ForgivingClassBuilder builder) {
         this.builder = builder;
     }
 
  
+    public ClassRegister getNewObject() throws BuilderException{
+    	return builder.build();
+    }
+    
+    
     public void parse(String s) throws ParseException {
         String[] tokens = s.split(",\\s*");
         for (int i = 0; i < tokens.length; i += 2) {
@@ -23,7 +28,7 @@ public class ClassInfoParser {
                 Calendar now = Calendar.getInstance();
                 DateFormat formatter = DateFormat.getDateInstance();
                 Date d = formatter.parse(val + ", " + now.get(Calendar.YEAR));
-                builder.setDate(ClassRegisterBuilder.futurize(d));
+                builder.setDate(StrictClassBuilder.futurize(d));
             } else if ("studentnumber".compareToIgnoreCase(type) == 0) 
                 builder.setStudentNumber(Integer.parseInt(val));
             else if ("building".compareToIgnoreCase(type) == 0)
@@ -34,4 +39,6 @@ public class ClassInfoParser {
                 builder.setEveryWeek(val.equalsIgnoreCase("true"));
         }
     }
+    
+    
 }
