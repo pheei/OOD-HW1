@@ -13,36 +13,25 @@ public class ForgivingClassBuilder extends ClassBuilder{
         
         while (then.before(now)) 
             then.add(Calendar.YEAR, 1);
-        
         return then.getTime();
     }
 
     public ClassRegister build() throws BuilderException {
         boolean noStudentNumber = (studentNumber == 0);
-
         if (noStudentNumber) {
         	studentNumber = MINSTUDENTNUM;
         }
-        
         if (building==null){
         	building = "TBD";
         }
-
         check();
-        
         return new ClassRegister(date, studentNumber, building, roomNumber, isEveryWeek);
-        
-
     }
-
 
     protected void check() throws BuilderException {
         if (date == null)
             throw new BuilderException("Valid date not found");
-
-
         if (studentNumber < MINSTUDENTNUM)
             throw new BuilderException("Minimum headcount is " + MINSTUDENTNUM);
-
     }
 }
