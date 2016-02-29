@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ClassInfoParser {
-	private ClassBuilder builder;
+    private ClassBuilder builder;
 
     public ClassInfoParser(ClassBuilder builder) {
         this.builder = builder;
